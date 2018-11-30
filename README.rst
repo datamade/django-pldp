@@ -13,11 +13,6 @@ INSTALLED_APPS = (
     ...
     'languages_plus',
     'pldp',
-    'pldp.agency',
-    'pldp.study',
-    'pldp.location',
-    'pldp.survey',
-
 )
 ```
 

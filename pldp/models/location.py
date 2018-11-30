@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _
 
 from countries_plus.models import Country
 
-from pldp.agency.models import Agency
+from pldp.models.agency import Agency
 
 
 class LocationLine(models.Model):
