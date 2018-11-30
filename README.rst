@@ -3,6 +3,26 @@ django-pldp
 
 Reusable Django app that implements the structure implied by the PDLP.
 
+Setup
+-----
+
+Add necessary things to your installed apps:
+
+```
+INSTALLED_APPS = (
+    ...
+    'languages_plus',
+    'pldp',
+
+)
+```
+
+Load in necessary fixtures
+
+```
+python manage.py initialize_pldp
+```
+
 Copyright
 ---------
 

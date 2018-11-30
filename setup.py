@@ -18,7 +18,10 @@ setup(
     url='https://datamade.us/',
     author='DataMade, LLC',
     author_email='info@datamade.us',
-    install_requires=['Django<2.2'],
+    install_requires=[
+        'Django<2.2',
+        'django-languages-plus==1.0.0',
+    ],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
