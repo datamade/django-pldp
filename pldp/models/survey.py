@@ -76,14 +76,14 @@ class SurveyRow(models.Model):
 
 class SurveyComponent(models.Model):
     COMPONENT_CHOICES = [
-        ('gender', 'Gender'),
-        ('age', 'Age'),
-        ('mode', 'Mode'),
-        ('posture', 'Posture'),
-        ('activities', 'Activities'),
-        ('groups', 'Groups'),
-        ('objects', 'Objects'),
-        ('geotag', 'GeoTag'),
+        ('gender', _('Gender')),
+        ('age', _('Age')),
+        ('mode', _('Mode')),
+        ('posture', _('Posture')),
+        ('activities', _('Activities')),
+        ('groups', _('Groups')),
+        ('objects', _('Objects')),
+        ('geotag', _('GeoTag')),
     ]
 
     name = models.CharField(max_length=15,
