@@ -1,21 +1,18 @@
 language: python
 
-python: '3.4'
-
-env:
-    - db_user=postgres
+python: '3.6'
 
 addons:
-  postgresql: '9.4'
+  postgresql: '10'
+
+  apt:
+    packages:
+      - postgresql-10-postgis-2.5
 
 install:
     - pip install --upgrade -r tests/test_requirements.txt
     - pip install -e .
 
-sudo: required 
-dist: trusty 
-group: deprecated-2017Q4
-
 script:
-    - flake8 ./councilmatic_core/*.py
+    - flake8 ./pldp/*.py
     - pytest
