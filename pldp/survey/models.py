@@ -3,8 +3,8 @@ import uuid
 from django.contrib.gis.db import models
 from django.utils.translation import ugettext as _
 
-from pldp.models.study import Study
-from pldp.models.location import Location
+from pldp.study.models import Study
+from pldp.location.models import Location
 
 
 class Survey(models.Model):
@@ -27,14 +27,14 @@ class Survey(models.Model):
                           editable=False)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
-    time_start = models.DateTime(help_text=_("Exact date and time that the "
-                                             "survey count started"))
-    time_stop = models.DateTime(help_text=_("Exact date and time that the "
-                                            "survey count stopped. Surveys of "
-                                            "moving people should be no less "
-                                            "than 10 minutes in length. "
-                                            "Surveys of stationary people "
-                                            "should be snapshots in time."))
+    time_start = models.DateTimeField(help_text=_("Exact date and time that the "
+                                                  "survey count started"))
+    time_stop = models.DateTimeField(help_text=_("Exact date and time that the "
+                                                 "survey count stopped. Surveys of "
+                                                 "moving people should be no less "
+                                                 "than 10 minutes in length. "
+                                                 "Surveys of stationary people "
+                                                 "should be snapshots in time."))
     time_character = models.CharField(max_length=255,
                                       null=True,
                                       blank=True,

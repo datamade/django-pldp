@@ -11,8 +11,13 @@ Add necessary things to your installed apps:
 ```
 INSTALLED_APPS = (
     ...
+    'countries_plus',
     'languages_plus',
-    'pldp',
+    'pldp.core',
+    'pldp.location',
+    'pldp.agency',
+    'pldp.study',
+    'pldp.survey',
 )
 ```
 

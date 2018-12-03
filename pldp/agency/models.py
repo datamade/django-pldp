@@ -36,7 +36,8 @@ class Agency(models.Model):
                                              "agency posting the study. Leave "
                                              "blank, if only British English "
                                              "is used to fill in the study."))
-    type = models.CharField(null=True,
+    type = models.CharField(max_length=255,
+                            null=True,
                             blank=True,
                             help_text=_("Character of the type of agency that "
                                         "is conducting/posting the study."))

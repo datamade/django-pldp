@@ -11,14 +11,10 @@ class Command(BaseCommand):
     help = 'Loads fixtures needed for PLDP'
 
     def handle(self, *args, **options):
-        self.stdout.write(self.style.INFO('Loading languages ....\n'))
-
+        self.stdout.write(self.style.HTTP_INFO('Loading languages ....\n'))
         language_fixture_path = os.path.join(LANGUAGE_FIXTURE_DIR, 'languages_data.json.gz')
-
         management.call_command('loaddata', language_fixture_path)
 
-        self.stdout.write(self.style.INFO('Loading countries ....\n'))
-
+        self.stdout.write(self.style.HTTP_INFO('Loading countries ....\n'))
         management.call_command('update_countries_plus')
-
         self.stdout.write(self.style.SUCCESS('PLDP models initialized!'))

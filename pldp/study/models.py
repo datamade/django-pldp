@@ -3,7 +3,7 @@ import uuid
 from django.contrib.gis.db import models
 from django.utils.translation import ugettext as _
 
-from pldp.models.agency import Agency
+from pldp.agency.models import Agency
 
 
 class StudyArea(models.Model):

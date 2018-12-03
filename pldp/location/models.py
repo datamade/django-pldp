@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _
 
 from countries_plus.models import Country
 
-from pldp.models.agency import Agency
+from pldp.agency.models import Agency
 
 
 class LocationLine(models.Model):
@@ -121,7 +121,6 @@ class Location(models.Model):
     region = models.CharField(max_length=1000,
                               null=True,
                               blank=True,
-                              on_delete=models.CASCADE,
                               help_text=_("State, county, or municipal "
                                           "boundary of the location."))
     city = models.CharField(max_length=1000,
@@ -132,9 +131,11 @@ class Location(models.Model):
                                         "blank if the survey location is not "
                                         "based within a city."))
     line = models.ForeignKey(LocationLine,
+                             on_delete=models.CASCADE,
                              help_text=_("Line that describes the geometry "
                                          "of the location"))
     area = models.ForeignKey(LocationArea,
+                             on_delete=models.CASCADE,
                              help_text=_("Polygon that describes the geometry "
                                          "of the location"))
     type = models.CharField(max_length=4,
@@ -167,12 +168,12 @@ class Location(models.Model):
                                                "indication of whether an area "
                                                "is a subdivision of a single "
                                                "survey location."))
-    character = model.CharField(max_length=15,
-                                null=True,
-                                blank=True,
-                                choices=CHARACTER_CHOICES,
-                                help_text=_("Primary character of the survey "
-                                            "location's immediate surroundings."))
+    character = models.CharField(max_length=15,
+                                 null=True,
+                                 blank=True,
+                                 choices=CHARACTER_CHOICES,
+                                 help_text=_("Primary character of the survey "
+                                             "location's immediate surroundings."))
 
     def __str__(self):
         return self.primary_name
