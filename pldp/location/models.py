@@ -131,10 +131,14 @@ class Location(models.Model):
                                         "blank if the survey location is not "
                                         "based within a city."))
     line = models.ForeignKey(LocationLine,
+                             null=True,
+                             blank=True,
                              on_delete=models.CASCADE,
                              help_text=_("Line that describes the geometry "
                                          "of the location"))
     area = models.ForeignKey(LocationArea,
+                             null=True,
+                             blank=True,
                              on_delete=models.CASCADE,
                              help_text=_("Polygon that describes the geometry "
                                          "of the location"))
