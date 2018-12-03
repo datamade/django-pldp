@@ -7,7 +7,7 @@ from pldp.models.study import Study
 from pldp.models.location import Location
 
 
-class Study(models.Model):
+class Survey(models.Model):
     METHOD_CHOICES = [
         ("analog", _("Analog")),
         ("video", _("Video")),
@@ -55,7 +55,7 @@ class Study(models.Model):
     microclimate = models.CharField(max_length=255,
                                     null=True,
                                     blank=True,
-                                    help_text=_("Perceived whether condition "
+                                    help_text=_("Perceived weather condition "
                                                 "on the specific survey "
                                                 "location."))
     temperature_c = models.IntegerField(null=True,
@@ -70,40 +70,31 @@ class Study(models.Model):
                                           "method"))
 
 
-
-class ComponentBase(models.Model):
-
-    class Meta:
-        abstract = True
+class SurveyRow(models.Model):
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
 
 
-class Gender(models.Model):
-    pass
+class SurveyComponent(models.Model):
+    COMPONENT_CHOICES = [
+        ('gender', 'Gender'),
+        ('age', 'Age'),
+        ('mode', 'Mode'),
+        ('posture', 'Posture'),
+        ('activities', 'Activities'),
+        ('groups', 'Groups'),
+        ('objects', 'Objects'),
+        ('geotag', 'GeoTag'),
+    ]
 
-
-class Age(models.Model):
-    pass
-
-
-class Mode(models.Model):
-    pass
-
-
-class Posture(models.Model):
-    pass
-
-
-class Activities(models.Model):
-    pass
-
-
-class Groups(models.Model):
-    pass
-
-
-class Objects(models.Model):
-    pass
-
-
-class GeoTag(models.Model):
-    pass
+    name = models.CharField(max_length=15,
+                            db_index=True,
+                            choices=COMPONENT_CHOICES,
+                            help_text=_("Name of the component"))
+    row = models.ForeignKey(SurveyRow, on_delete=models.CASCADE)
+    total = models.IntegerField(null=True,
+                                blank=True,
+                                help_text=_("Indicate the number of people "
+                                            "counted within the row. This "
+                                            "field is not an ID, but it should "
+                                            "be included with every survey."))
+    content = models.TextField()
