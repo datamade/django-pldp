@@ -28,13 +28,17 @@ class Survey(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
     time_start = models.DateTimeField(help_text=_("Exact date and time that the "
-                                                  "survey count started"))
+                                                  "survey count started"),
+                                      null=True,
+                                      blank=True)
     time_stop = models.DateTimeField(help_text=_("Exact date and time that the "
                                                  "survey count stopped. Surveys of "
                                                  "moving people should be no less "
                                                  "than 10 minutes in length. "
                                                  "Surveys of stationary people "
-                                                 "should be snapshots in time."))
+                                                 "should be snapshots in time."),
+                                     null=True,
+                                     blank=True)
     time_character = models.CharField(max_length=255,
                                       null=True,
                                       blank=True,
@@ -51,7 +55,9 @@ class Survey(models.Model):
                                                   "collected a total of the "
                                                   "people present within the "
                                                   "survey count time or a "
-                                                  "representative sample"))
+                                                  "representative sample"),
+                                      null=True,
+                                      blank=True)
     microclimate = models.CharField(max_length=255,
                                     null=True,
                                     blank=True,
@@ -69,113 +75,75 @@ class Survey(models.Model):
                               help_text=_("Description of the survey count "
                                           "method"))
 
+    def totals(self, query_filters=[]):
+
+        # Takes in a list of ways you'd like to filter the survey results and
+        # returns a count by component, by choice
+
+        pass
+
 
 class SurveyRow(models.Model):
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
-
-
-class ComponentBase(models.Model):
-    type_of_choice = models.CharField(max_length=8,
-                                      help_text=_('Level of detail expected by '
-                                                  'survey component'))
-    basic_choice = models.CharField(max_length=255,
-                                    null=True,
-                                    blank=True)
-
-    detailed_choice = models.CharField(max_length=255,
-                                       null=True,
-                                       blank=True)
-
-    complex_choice = models.CharField(max_length=255,
-                                      null=True,
-                                      blank=True)
-
-    class Meta:
-        abstract = True
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self._meta.get_field('type_of_choice').choices = self.TYPE_CHOICES
-        self._meta.get_field('basic_choice').help_text = self.HELP_TEXT
-        self._meta.get_field('basic_choice').choice = self.BASIC_CHOICES
-        self._meta.get_field('detailed_choice').help_text = self.HELP_TEXT
-        self._meta.get_field('detailed_choice').choice = self.DETAILED_CHOICES
-        self._meta.get_field('complex_choice').help_text = self.HELP_TEXT
-        self._meta.get_field('complex_choice').choice = self.COMPLEX_CHOICES
+    total = models.IntegerField(help_text=_("Indicate the number of people "
+                                            "counted within the row. This "
+                                            "field is not an ID, but it should "
+                                            "be included with every survey."),
+                                default=1)
 
     @property
-    def choice(self):
-        return getattr(self, '{}_choice'.format(self.type_of_choice))
+    def response(self):
+        response = {}
+        for component in self.surveycomponent_set.all():
+            response[component.type_of_component] = component.choice
+
+        return response
 
 
-class GenderComponent(ComponentBase):
-    TYPE_CHOICES = [
-        ('basic', _('Basic choices')),
-    ]
+class AbstractSurveyComponent(models.Model):
 
-    BASIC_CHOICES = [
-        ('male', _('Male')),
-        ('female', _('Female')),
-        ('unknown', _('Unknown')),
-    ]
-    HELP_TEXT = _('Observed or reported gender.')
-
-
-class AgeComponent(ComponentBase):
-    TYPE_CHOICES = [
+    DETAIL_CHOICES = [
         ('basic', _('Basic choices')),
         ('detailed', _('Detailed choices')),
         ('complex', _('Complex choices')),
     ]
 
-    BASIC_CHOICES = [
-        ('0-14', _('Child')),
-        ('15-24', _('Teen or young adult')),
-        ('25-64', _('Adult')),
-        ('65+', _('Senior')),
-    ]
-    DETAILED_CHOICES = [
-        ('0-4', _('Infant or young child')),
-        ('5-14', _('Child')),
-        ('15-24', _('Teen or young adult')),
-        ('25-44', _('Adult')),
-        ('45-64', _('Mature adult')),
-        ('65-74', _('Young senior')),
-        ('75+', _('Mature senior')),
-    ]
-    COMPLEX_CHOICES = []
+    type_of_component = models.CharField(max_length=10,
+                                         help_text=_('The component that is '
+                                                     'actually in use'))
 
+    detail_level = models.CharField(max_length=10,
+                                    help_text=_('The level of detail that we '
+                                                'expect in the responses'),
+                                    choices=DETAIL_CHOICES,
+                                    default='basic')
 
-class SurveyComponent(models.Model):
-    COMPONENT_CHOICES = [
-        ('gender', _('Gender')),
-        ('age', _('Age')),
-        ('mode', _('Mode')),
-        ('posture', _('Posture')),
-        ('activities', _('Activities')),
-        ('groups', _('Groups')),
-        ('objects', _('Objects')),
-        ('geotag', _('GeoTag')),
-    ]
+    gender = models.CharField(max_length=10,
+                              null=True,
+                              blank=True,
+                              help_text=_('Observed or reported gender'))
 
-    type_of_component = models.CharField(max_length=15,
-                                         db_index=True,
-                                         choices=COMPONENT_CHOICES,
-                                         help_text=_("Type of survey component"),
-                                         default='gender')
-    gender = models.ForeignKey(GenderComponent,
-                               null=True,
-                               blank=True,
-                               on_delete=models.CASCADE)
-    age = models.ForeignKey(AgeComponent,
-                            null=True,
-                            blank=True,
-                            on_delete=models.CASCADE)
+    age = models.CharField(max_length=10,
+                           null=True,
+                           blank=True,
+                           help_text=_('Observed or reported age'))
+
     row = models.ForeignKey(SurveyRow, on_delete=models.CASCADE)
-    total = models.IntegerField(null=True,
-                                blank=True,
-                                help_text=_("Indicate the number of people "
-                                            "counted within the row. This "
-                                            "field is not an ID, but it should "
-                                            "be included with every survey."))
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+
+    class Meta:
+        abstract = True
+
+    @property
+    def choice(self):
+        return getattr(self, self.type_of_component)
+
+
+class SurveyComponent(AbstractSurveyComponent):
+    '''
+    This class exists to basically make it possible to write some meaningful
+    tests (and also in case you don't actually want to override anything). We
+    might want to remove this eventually? So that it doesn't create an extra
+    table in the database.
+    '''
+    pass
