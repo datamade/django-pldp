@@ -14,4 +14,4 @@ install:
 
 script:
     - flake8 ./pldp/*.py
-    # - pytest
+    - pytest
