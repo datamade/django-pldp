@@ -1,5 +1,7 @@
 Django==2.1.5
 psycopg2==2.7.7
+flake8
+pytest-django==3.4.4
 
 django-countries-plus==1.2.1
 django-languages-plus==1.0.0

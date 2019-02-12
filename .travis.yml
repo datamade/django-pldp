@@ -10,8 +10,7 @@ addons:
       - postgresql-10-postgis-2.4
 
 install:
-    - pip install --upgrade -r tests/test_requirements.txt
-    - pip install -e .
+    - pip install --upgrade -r pldp/equirements.txt
 
 script:
     - flake8 ./pldp/*.py
