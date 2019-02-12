@@ -1,8 +1,8 @@
 django-pldp
 ===========
 
-🗺 A reusable Django app that implements the structure implied by the Gehl
-Institute's [Public Life Data Protocol](https://gehlinstitute.org/tool/public-life-data-protocol/).
+🗺 A reusable Django app that implements the structure implied by the [Gehl
+Institute's](https://gehlinstitute.org/) [Public Life Data Protocol](https://gehlinstitute.org/tool/public-life-data-protocol/).
 
 Philosophical Underpinnings
 ---------------------------
