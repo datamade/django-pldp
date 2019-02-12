@@ -6,26 +6,39 @@ Reusable Django app that implements the structure implied by the PDLP.
 Setup
 -----
 
-Add necessary things to your installed apps:
+1. Install `django-pldp` in the Django app where you'd like to use it:
+
+`git submodule add git@github.com:datamade/django-pldp.git`
+
+2. Install dependencies and add them to your `requirements.txt` file:
+
+`pip install django-countries-plus`
+and
+`pip install django-languages-plus`
+
+
+3. Add `django-pldp` to the installed apps in your project's `settings.py` file:
 
 ```
 INSTALLED_APPS = (
     ...
     'countries_plus',
     'languages_plus',
-    'pldp.core',
-    'pldp.location',
-    'pldp.agency',
-    'pldp.study',
-    'pldp.survey',
+    'django-pldp.pldp.core',
 )
 ```
 
-Load in necessary fixtures
+4. Update migrations:
+
+`python manage.py migrate`
+
+5. Load in necessary fixtures from `django-pldp`:
 
 ```
 python manage.py initialize_pldp
 ```
+
+You should now be able to use `django-pldp` in your project!
 
 Philosophical underpinnings
 ---------------------------
