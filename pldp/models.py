@@ -10,13 +10,13 @@ from countries_plus.models import Country
 # Agency model
 class Agency(models.Model):
     TYPE_CHOICES = [
-        ('governmental agency'), _('governmental agency')),
-        ('municipal agency'), _('municipal agency')),
-        ('non profit corporation'), _('non profit corporation')),
-        ('business corporation'), _('business corporation')),
-        ('community organisation'), _('community organisation')),
-        ('educational institute'), _('educational institute')),
-        ('private individual'), _('private individual')),
+        ('governmental agency', _('governmental agency')),
+        ('municipal agency', _('municipal agency')),
+        ('non profit corporation', _('non profit corporation')),
+        ('business corporation', _('business corporation')),
+        ('community organisation', _('community organisation')),
+        ('educational institute', _('educational institute')),
+        ('private individual', _('private individual')),
     ]
 
     id = models.UUIDField(primary_key=True,
@@ -435,6 +435,7 @@ class SurveyComponentGender(AbstractSurveyComponent):
                                             ),
                                 default=1)
 
+
 class SurveyComponentAge(AbstractSurveyComponent):
     age = models.CharField(max_length=255,
                            blank=True,
@@ -444,21 +445,24 @@ class SurveyComponentAge(AbstractSurveyComponent):
                                             ),
                                 default=1)
 
+
 class SurveyComponentMode(AbstractSurveyComponent):
     mode = models.CharField(max_length=255,
-                           blank=True,
-                           help_text=_('Observed or reported mode of '
-                                       'transportation'))
+                            blank=True,
+                            help_text=_('Observed or reported mode of '
+                                        'transportation'))
     count = models.IntegerField(help_text=_("Count the number of people "
                                             "using the specified mode "
                                             "of transportation."
                                             ),
                                 default=1)
 
+
 class SurveyComponentPosture(AbstractSurveyComponent):
     posture = models.CharField(max_length=255,
-                           blank=True,
-                           help_text=_('Observed or reported physical posture'))
+                               blank=True,
+                               help_text=_('Observed or reported physical '
+                                           'posture'))
     count = models.IntegerField(help_text=_("Count the number of people "
                                             "in the specified posture."
                                             ),
@@ -467,27 +471,29 @@ class SurveyComponentPosture(AbstractSurveyComponent):
 
 class SurveyComponentGroups(AbstractSurveyComponent):
     group = models.CharField(max_length=255,
-                           blank=True,
-                           help_text=_('Observed or reported size of group'))
+                             blank=True,
+                             help_text=_('Observed or reported size of group'))
     count = models.IntegerField(help_text=_("Count the number of groups "
                                             "of the specified size."
                                             ),
                                 default=1)
 
+
 class SurveyComponentActivities(AbstractSurveyComponent):
     posture = models.CharField(max_length=255,
-                           blank=True,
-                           help_text=_('Observed or reported activities'))
+                               blank=True,
+                               help_text=_('Observed or reported activities'))
     count = models.IntegerField(help_text=_("Count the number of people "
                                             "engaging in the specified "
                                             "activity."),
                                 default=1)
 
+
 class SurveyComponentObjects(AbstractSurveyComponent):
     object = models.CharField(max_length=255,
-                           blank=True,
-                           help_text=_('Observed or reported objects or '
-                                       'animals carried'))
+                              blank=True,
+                              help_text=_('Observed or reported objects or '
+                                          'animals carried'))
     count = models.IntegerField(help_text=_("Count the number of people "
                                             "carrying the specified "
                                             "object or animal."),
