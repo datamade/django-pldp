@@ -3,29 +3,40 @@ django-pldp
 
 Reusable Django app that implements the structure implied by the PDLP.
 
-Setup
+To develop `django-pldp` locally
 -----
 
-1. Install `django-pldp` in the Django app where you'd like to use it:
+1. Create a virtualenv:
 
-`git submodule add git@github.com:datamade/django-pldp.git`
+2. Install requirements:
 
-2. Install dependencies and add them to your `requirements.txt` file:
+`pip install -r pldp/requirements.txt`
 
-`pip install django-countries-plus`
-and
-`pip install django-languages-plus`
+3. Export Django settings:
+
+`export DJANGO_SETTINGS_MODULE=tests.test_config`
+
+4. Create a database:
+
+`createdb pldp`
+
+5. Run migrations:
+
+`django-admin migrate`
 
 
-3. Add `django-pldp` to the installed apps in your project's `settings.py` file:
+To add `django-pldp` to your project
+-----
 
-```
-INSTALLED_APPS = (
+1. Add django-pldp to the installed apps in your project's settings.py file:
+
+```python
+INSTALLED_APPS = [
     ...
     'countries_plus',
     'languages_plus',
-    'django-pldp.pldp.core',
-)
+    'pldp.core',
+]
 ```
 
 4. Update migrations:

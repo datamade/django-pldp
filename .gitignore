@@ -1,7 +1,7 @@
 *.pyc
 __pycache__/*
 dist/*
-django-councilmatic.egg-info/*
+django-pldp.egg-info/*
 *.egg-info
 .DS_STORE
 build/*
