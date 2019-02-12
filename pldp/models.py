@@ -9,6 +9,16 @@ from countries_plus.models import Country
 
 # Agency model
 class Agency(models.Model):
+    TYPE_CHOICES = [
+        ('governmental agency'), _('governmental agency')),
+        ('municipal agency'), _('municipal agency')),
+        ('non profit corporation'), _('non profit corporation')),
+        ('business corporation'), _('business corporation')),
+        ('community organisation'), _('community organisation')),
+        ('educational institute'), _('educational institute')),
+        ('private individual'), _('private individual')),
+    ]
+
     id = models.UUIDField(primary_key=True,
                           default=uuid.uuid4,
                           editable=False)
@@ -16,7 +26,6 @@ class Agency(models.Model):
                             help_text=_("Full name of the agency that is "
                                         "conducting/posting the study."))
     department = models.CharField(max_length=1000,
-                                  null=True,
                                   blank=True,
                                   help_text=_("Specific department within the "
                                               "agency that is responsible for "
@@ -25,7 +34,6 @@ class Agency(models.Model):
                                               "necessary."
                                               ))
     phone = models.CharField(max_length=100,
-                             null=True,
                              blank=True,
                              help_text=_("Direct single voice telephone "
                                          "number for the specified agency."))
@@ -37,11 +45,9 @@ class Agency(models.Model):
                                  blank=True,
                                  on_delete=models.CASCADE,
                                  help_text=_("Main language used by the "
-                                             "agency posting the study. Leave "
-                                             "blank, if only British English "
-                                             "is used to fill in the study."))
+                                             "agency posting the study."))
     type = models.CharField(max_length=255,
-                            null=True,
+                            choices=TYPE_CHOICES,
                             blank=True,
                             help_text=_("Character of the type of agency that "
                                         "is conducting/posting the study."))
@@ -76,7 +82,6 @@ class LocationLine(models.Model):
                                                 "that the line geometry "
                                                 "intersects."))
     typology_pedestrian = models.CharField(max_length=255,
-                                           null=True,
                                            blank=True,
                                            help_text=_("Typology of the space "
                                                        "assigned for "
@@ -84,14 +89,12 @@ class LocationLine(models.Model):
                                                        "line geometry "
                                                        "intersects."))
     typology_bicycle = models.CharField(max_length=255,
-                                        null=True,
                                         blank=True,
                                         help_text=_("Typology of the space "
                                                     "assigned for bicycles "
                                                     "that the line geometry "
                                                     "intersects."))
     typology_vehicular = models.CharField(max_length=255,
-                                          null=True,
                                           blank=True,
                                           help_text=_("Typology of the space "
                                                       "assigned for vehicles "
@@ -114,7 +117,6 @@ class LocationArea(models.Model):
                                                "inhabitable and assigned for "
                                                "stationary activities."))
     typology = models.CharField(max_length=255,
-                                null=True,
                                 blank=True,
                                 help_text=_("Typology of the space defined "
                                             "within the area geometry"))
@@ -162,12 +164,10 @@ class Location(models.Model):
                                 help_text=_("Country that the survey location "
                                             "is based within."))
     region = models.CharField(max_length=1000,
-                              null=True,
                               blank=True,
                               help_text=_("State, county, or municipal "
                                           "boundary of the location."))
     city = models.CharField(max_length=1000,
-                            null=True,
                             blank=True,
                             help_text=_("Name of the city that the survey "
                                         "location is based within. Leave "
@@ -187,7 +187,6 @@ class Location(models.Model):
                                          "of the location"))
     type = models.CharField(max_length=4,
                             choices=TYPE_CHOICES,
-                            null=True,
                             blank=True,
                             help_text=_("Indication of whether the location "
                                         "is intended for counts of people "
@@ -198,7 +197,6 @@ class Location(models.Model):
                                     help_text=_("Official, specific name of "
                                                 "the survey location."))
     secondary_name = models.CharField(max_length=1000,
-                                      null=True,
                                       blank=True,
                                       help_text=_("Secondary or specifying "
                                                   "name of the survey "
@@ -207,7 +205,6 @@ class Location(models.Model):
                                                   "necessary."))
     subdivision = models.CharField(max_length=9,
                                    choices=SUBDIVISION_CHOICES,
-                                   null=True,
                                    blank=True,
                                    help_text=_("Line Geometry: indication of "
                                                "whether the line is a "
@@ -217,7 +214,6 @@ class Location(models.Model):
                                                "is a subdivision of a single "
                                                "survey location."))
     character = models.CharField(max_length=15,
-                                 null=True,
                                  blank=True,
                                  choices=CHARACTER_CHOICES,
                                  help_text=_("Primary character of the survey "
@@ -253,19 +249,16 @@ class Study(models.Model):
                           editable=False)
     agency = models.ForeignKey(Agency, on_delete=models.CASCADE)
     title = models.CharField(max_length=1000,
-                             null=True,
                              blank=True,
                              help_text=_("Title or name of the study as given "
                                          "by the conducting agency."))
     project = models.CharField(max_length=1000,
-                               null=True,
                                blank=True,
                                help_text=_("Title or name of the project that "
                                            "the study is part of. Leave blank "
                                            "if the study is not linked to any "
                                            "other project."))
     project_phase = models.CharField(max_length=100,
-                                     null=True,
                                      blank=True,
                                      help_text=_("Project phase or stage at "
                                                  "the time of the study. Leave"
@@ -282,7 +275,6 @@ class Study(models.Model):
                                             "taking place within a study"))
     scale = models.CharField(max_length=12,
                              choices=SCALE_CHOICES,
-                             null=True,
                              blank=True,
                              help_text=_("Approximate scale of the entire "
                                          "study area, irregardless of the "
@@ -352,7 +344,6 @@ class Survey(models.Model):
                                      null=True,
                                      blank=True)
     time_character = models.CharField(max_length=255,
-                                      null=True,
                                       blank=True,
                                       help_text=_("Indicate if anything out "
                                                   "of the ordinary took place "
@@ -368,10 +359,8 @@ class Survey(models.Model):
                                                   "people present within the "
                                                   "survey count time or a "
                                                   "representative sample"),
-                                      null=True,
                                       blank=True)
     microclimate = models.CharField(max_length=255,
-                                    null=True,
                                     blank=True,
                                     help_text=_("Perceived weather condition "
                                                 "on the specific survey "
@@ -420,7 +409,7 @@ class AbstractSurveyComponent(models.Model):
         ('complex', _('Complex choices')),
     ]
 
-    detail_level = models.CharField(max_length=10,
+    detail_level = models.CharField(max_length=255,
                                     help_text=_('The level of detail that we '
                                                 'expect in the responses'),
                                     choices=DETAIL_CHOICES,
@@ -438,8 +427,7 @@ class AbstractSurveyComponent(models.Model):
 
 
 class SurveyComponentGender(AbstractSurveyComponent):
-    gender = models.CharField(max_length=10,
-                              null=True,
+    gender = models.CharField(max_length=255,
                               blank=True,
                               help_text=_('Observed or reported gender'))
     count = models.IntegerField(help_text=_("Count the number of people "
@@ -448,8 +436,7 @@ class SurveyComponentGender(AbstractSurveyComponent):
                                 default=1)
 
 class SurveyComponentAge(AbstractSurveyComponent):
-    age = models.CharField(max_length=10,
-                           null=True,
+    age = models.CharField(max_length=255,
                            blank=True,
                            help_text=_('Observed or reported age'))
     count = models.IntegerField(help_text=_("Count the number of people "
@@ -458,8 +445,7 @@ class SurveyComponentAge(AbstractSurveyComponent):
                                 default=1)
 
 class SurveyComponentMode(AbstractSurveyComponent):
-    mode = models.CharField(max_length=10,
-                           null=True,
+    mode = models.CharField(max_length=255,
                            blank=True,
                            help_text=_('Observed or reported mode of '
                                        'transportation'))
@@ -470,8 +456,7 @@ class SurveyComponentMode(AbstractSurveyComponent):
                                 default=1)
 
 class SurveyComponentPosture(AbstractSurveyComponent):
-    posture = models.CharField(max_length=10,
-                           null=True,
+    posture = models.CharField(max_length=255,
                            blank=True,
                            help_text=_('Observed or reported physical posture'))
     count = models.IntegerField(help_text=_("Count the number of people "
@@ -481,8 +466,7 @@ class SurveyComponentPosture(AbstractSurveyComponent):
 
 
 class SurveyComponentGroups(AbstractSurveyComponent):
-    group = models.CharField(max_length=10,
-                           null=True,
+    group = models.CharField(max_length=255,
                            blank=True,
                            help_text=_('Observed or reported size of group'))
     count = models.IntegerField(help_text=_("Count the number of groups "
@@ -491,8 +475,7 @@ class SurveyComponentGroups(AbstractSurveyComponent):
                                 default=1)
 
 class SurveyComponentActivities(AbstractSurveyComponent):
-    posture = models.CharField(max_length=10,
-                           null=True,
+    posture = models.CharField(max_length=255,
                            blank=True,
                            help_text=_('Observed or reported activities'))
     count = models.IntegerField(help_text=_("Count the number of people "
@@ -501,8 +484,7 @@ class SurveyComponentActivities(AbstractSurveyComponent):
                                 default=1)
 
 class SurveyComponentObjects(AbstractSurveyComponent):
-    object = models.CharField(max_length=10,
-                           null=True,
+    object = models.CharField(max_length=255,
                            blank=True,
                            help_text=_('Observed or reported objects or '
                                        'animals carried'))
