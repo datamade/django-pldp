@@ -105,4 +105,4 @@ You should now be able to use `django-pldp` in your project!
 
 Copyright (c) 2019 University City District and DataMade.
 Released under the [MIT
-Licens](https://github.com/datamade/django-councilmatic/blob/master/LICENSE).
+License](https://github.com/datamade/django-councilmatic/blob/master/LICENSE).

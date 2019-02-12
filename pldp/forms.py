@@ -15,7 +15,7 @@ from django.utils.translation import ugettext as _
 # to make a tool that makes surveys, you'll need to implement that logic in
 # your app.
 
-
+# Choices for SurveyComponentGender
 GENDER_TYPE_CHOICES = [
     ('basic', _('Basic choices')),
 ]
@@ -25,12 +25,13 @@ GENDER_BASIC_CHOICES = [
     ('female', _('Female')),
     ('unknown', _('Unknown')),
 ]
+
+# Choices for SurveyComponentAge
 AGE_TYPE_CHOICES = [
     ('basic', _('Basic choices')),
     ('detailed', _('Detailed choices')),
     ('complex', _('Complex choices')),
 ]
-
 AGE_BASIC_CHOICES = [
     ('0-14', _('Child')),
     ('15-24', _('Teen or young adult')),
