@@ -6,13 +6,10 @@ import pytest
 from django.core.management import call_command
 
 from countries_plus.models import Country
-from pldp.agency.models import Agency
-from pldp.survey.models import Survey, SurveyRow, SurveyComponent
-from pldp.study.models import StudyArea, Study
-from pldp.survey.forms import GENDER_BASIC_CHOICES, AGE_BASIC_CHOICES, \
+from pldp.models import Agency, Survey, SurveyRow, SurveyComponent, StudyArea, \
+    Study, Location, LocationLine
+from pldp.forms import GENDER_BASIC_CHOICES, AGE_BASIC_CHOICES, \
     AGE_DETAILED_CHOICES, AGE_COMPLEX_CHOICES
-from pldp.location.models import Location, LocationLine
-
 
 @pytest.fixture
 @pytest.mark.django_db
