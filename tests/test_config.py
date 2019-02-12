@@ -15,11 +15,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'countries_plus',
     'languages_plus',
-    'pldp.core',
-    'pldp.location',
-    'pldp.agency',
-    'pldp.study',
-    'pldp.survey',
+    'pldp',
 )
 
 MIDDLEWARE_CLASSES = ()
