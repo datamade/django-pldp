@@ -18,4 +18,8 @@ INSTALLED_APPS = (
     'pldp',
 )
 
+ALLOWED_HOSTS = (
+    'localhost',
+)
+
 MIDDLEWARE_CLASSES = ()

@@ -31,12 +31,12 @@ To add `django-pldp` to your project
 1. Add django-pldp to the installed apps in your project's settings.py file:
 
 ```python
-INSTALLED_APPS = [
+INSTALLED_APPS = (
     ...
     'countries_plus',
     'languages_plus',
     'pldp.core',
-]
+)
 ```
 
 4. Update migrations:
