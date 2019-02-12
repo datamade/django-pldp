@@ -3,7 +3,7 @@ SECRET_KEY = 'replacethiswithsomethingsecret'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'pldp',
+        'NAME': 'travis',
         'USER': '',
         'PASSWORD': '',
         'HOST': 'localhost',

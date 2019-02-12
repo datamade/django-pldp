@@ -1,31 +1,48 @@
 django-pldp
 ===========
 
-Reusable Django app that implements the structure implied by the PDLP.
+🗺 A reusable Django app that implements the structure implied by the Gehl
+Institute's [Public Life Data Protocol](https://gehlinstitute.org/tool/public-life-data-protocol/).
 
-To develop `django-pldp` locally
------
+Philosophical Underpinnings
+---------------------------
 
-1. Create a virtualenv:
+From the Gehl Institute:
 
-2. Install requirements:
+> The Public Life Data Protocol (the Protocol) describes a set of metrics that
+> are important to the understanding of public life—people moving and staying
+> in public space—and aims to establish a common format for the collection and
+> storage of such data. Used in conjunction with the Public Life Data Tools or
+> other observational methods for collecting data about people in public space,
+> the Protocol provides the structure for the data you collect.
 
-`pip install -r pldp/requirements.txt`
+> Based on four decades of research and application of data about public life
+> to shape public policy, planning, and urban design, the Protocol is an open
+> data specification intended to improve the ability of everyone to share and
+> compare information about public life activity in public space. In recent
+> years, practitioners and cities have incorporated people-centered metrics and
+> public life data into their engineering models, investment decisions, and
+> design choices. These methods, based on decades of research, have now been
+> applied in hundreds of cities around the world. There is tremendous potential
+> to make public life datasets more compatible, scalable, and comparable across
+> different cities and regions.
 
-3. Export Django settings:
+The PLDP describes 3 different modes of collecting observational survey data:
 
-`export DJANGO_SETTINGS_MODULE=tests.test_config`
+1. Linked surveys: Collecting many pieces of information at the same time
+   about the same respondents.
+2. Simultaneous surveys: Collecting many pieces of information at the same
+   time but not about the same respondents.
+3. Consecutive surveys: Collecting many pieces of information at different
+   times from different respondents.
 
-4. Create a database:
+Surveys should always have a Study and Location in common. A Survey in the
+first mode has a collection of SurveyComponents that share a SurveyRow.
+A Survey in the second mode can have a collection of SurveyComponents but they
+will each be in separate SurveyRow. The third mode suggests entirely disjoint
+collection efforts that merely have a Location in common.
 
-`createdb pldp`
-
-5. Run migrations:
-
-`django-admin migrate`
-
-
-To add `django-pldp` to your project
+Adding `django-pldp` to Your Project (NB: this needs work)
 -----
 
 1. Add django-pldp to the installed apps in your project's settings.py file:
@@ -51,23 +68,27 @@ python manage.py initialize_pldp
 
 You should now be able to use `django-pldp` in your project!
 
-Philosophical underpinnings
----------------------------
+Developing `django-pldp` Locally
+-----
 
-PLDP describes 3 different modes of collecting survey responses:
+1. Create a virtualenv:
 
-1. Linked surveys: Collecting many pieces of information at the same time
-   about the same respondents.
-2. Simultaneous surveys: Collecting many pieces of information at the same
-   time but not about the same respondents.
-3. Consecutive surveys: Collecting many pieces of information at different
-   times from different respondents.
+2. Install requirements:
 
-Surveys should always have a Study and Location in common. A Survey in the
-first mode has a collection of SurveyComponents that share a SurveyRow.
-A Survey in the second mode can have a collection of SurveyComponents but they
-will each be in separate SurveyRow. The third mode suggests entirely disjoint
-collection efforts that merely have a Location in common.
+`pip install -r pldp/requirements.txt`
+
+3. Export Django settings:
+
+`export DJANGO_SETTINGS_MODULE=tests.test_config`
+
+4. Create a database:
+
+`createdb pldp`
+
+5. Run migrations:
+
+`django-admin migrate`
+
 
 Copyright
 ---------
