@@ -1,13 +1,10 @@
-django-pldp
-===========
+# django-pldp
 
-🗺 A reusable Django app that implements the structure implied by the [Gehl
-Institute's](https://gehlinstitute.org/) [Public Life Data Protocol](https://gehlinstitute.org/tool/public-life-data-protocol/).
+🌳 A reusable Django app implementing the Gehl Institute's [Public Life Data Protocol](https://gehlinstitute.org/tool/public-life-data-protocol/).
 
-Philosophical Underpinnings
----------------------------
+## Philosophical underpinnings
 
-From the Gehl Institute:
+From the [Gehl Institute](https://gehlinstitute.org/):
 
 > The Public Life Data Protocol (the Protocol) describes a set of metrics that
 > are important to the understanding of public life—people moving and staying
@@ -42,8 +39,10 @@ A Survey in the second mode can have a collection of SurveyComponents but they
 will each be in separate SurveyRow. The third mode suggests entirely disjoint
 collection efforts that merely have a Location in common.
 
-Adding `django-pldp` to Your Project (NB: this needs work)
------
+This implementation of the PLDP is based on the September 2017 Beta release. The Gehl
+Institute's full documentation of the protocol can be found [here](pldp-source-documents/PLDP_BETA%20Publication%20-%2020170927.pdf).
+
+## Adding `django-pldp` to your project (NB: this needs work)
 
 1. Add django-pldp to the installed apps in your project's settings.py file:
 
@@ -52,7 +51,7 @@ INSTALLED_APPS = (
     ...
     'countries_plus',
     'languages_plus',
-    'pldp.core',
+    'pldp',
 )
 ```
 
@@ -68,16 +67,28 @@ python manage.py initialize_pldp
 
 You should now be able to use `django-pldp` in your project!
 
-Developing `django-pldp` Locally
------
+## Developing `django-pldp` locally
 
-1. Create a virtualenv:
+1. Clone this repository and `cd` into your local copy.
 
-2. Install requirements:
+    ```bash
+    git clone git@github.com:datamade/django-pldp.git
+    cd django-pldp
+    ```
 
-`pip install -r pldp/requirements.txt`
+2. Create a virtual environment. (We recommend using [`virtualenvwrapper`](http://virtualenvwrapper.readthedocs.org/en/latest/install.html) for working in a virtualized development environment.)
 
-3. Export Django settings:
+    ```bash
+    mkvirtualenv -p python3 pldp
+    ```
+
+3. Install the requirements.
+
+    ```bash
+    pip install -r pldp/requirements.txt
+    ```
+
+4. Export the Django settings:
 
 `export DJANGO_SETTINGS_MODULE=tests.test_config`
 
@@ -90,9 +101,8 @@ Developing `django-pldp` Locally
 `django-admin migrate`
 
 
-Copyright
----------
+## Copyright
 
-Copyright (c) 2018 University City District and DataMade.
-Released under the `MIT
-License <https://github.com/datamade/django-councilmatic/blob/master/LICENSE>`__.
+Copyright (c) 2019 University City District and DataMade.
+Released under the [MIT
+Licens](https://github.com/datamade/django-councilmatic/blob/master/LICENSE).
