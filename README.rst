@@ -10,16 +10,21 @@ Setup
 
 `git submodule add git@github.com:datamade/django-pldp.git`
 
-2. Install dependencies and add them to your `requirements.txt` file:
-
-`pip install django-countries-plus`
-and
-`pip install django-languages-plus`
-
-
-3. Add `django-pldp` to the installed apps in your project's `settings.py` file:
+2. Add dependencies to your `requirements.txt` file:
 
 ```
+django-countries-plus==1.2.1
+django-languages-plus==1.0.0
+```
+
+3. Install requirements:
+
+`pip install -r requirements.txt`
+
+
+4. Add `django-pldp` to the installed apps in your project's `settings.py` file:
+
+```python
 INSTALLED_APPS = (
     ...
     'countries_plus',
@@ -28,11 +33,11 @@ INSTALLED_APPS = (
 )
 ```
 
-4. Update migrations:
+5. Update migrations:
 
 `python manage.py migrate`
 
-5. Load in necessary fixtures from `django-pldp`:
+6. Load in necessary fixtures from `django-pldp`:
 
 ```
 python manage.py initialize_pldp
