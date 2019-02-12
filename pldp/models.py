@@ -1,11 +1,11 @@
 import uuid
 
-from django.db import models
 from django.contrib.gis.db import models
 from django.utils.translation import ugettext as _
 
 from languages_plus.models import Language
 from countries_plus.models import Country
+
 
 # Agency model
 class Agency(models.Model):
@@ -21,7 +21,9 @@ class Agency(models.Model):
                                   help_text=_("Specific department within the "
                                               "agency that is responsible for "
                                               "the study. Leave blank, if no "
-                                              "such specification is necessary."))
+                                              "such specification is "
+                                              "necessary."
+                                              ))
     phone = models.CharField(max_length=100,
                              null=True,
                              blank=True,
@@ -46,6 +48,7 @@ class Agency(models.Model):
 
     def __str__(self):
         return self.name
+
 
 # Location models
 class LocationLine(models.Model):
@@ -102,8 +105,8 @@ class LocationArea(models.Model):
                                                  "attributes were measured."))
     total_sqm = models.FloatField(null=True,
                                   blank=True,
-                                  help_text=_("Total area of the space defined "
-                                              "by the area geometry"))
+                                  help_text=_("Total area of the space "
+                                              "defined by the area geometry"))
     people_sqm = models.FloatField(null=True,
                                    blank=True,
                                    help_text=_("Area of the space defined by "
@@ -115,6 +118,7 @@ class LocationArea(models.Model):
                                 blank=True,
                                 help_text=_("Typology of the space defined "
                                             "within the area geometry"))
+
 
 class Location(models.Model):
     TYPE_CHOICES = [
@@ -197,17 +201,18 @@ class Location(models.Model):
                                       null=True,
                                       blank=True,
                                       help_text=_("Secondary or specifying "
-                                                  "name of the survey location. "
-                                                  "Leave blank if no "
-                                                  "specification is necessary."))
+                                                  "name of the survey "
+                                                  "location. Leave blank if "
+                                                  "no specification is "
+                                                  "necessary."))
     subdivision = models.CharField(max_length=9,
                                    choices=SUBDIVISION_CHOICES,
                                    null=True,
                                    blank=True,
                                    help_text=_("Line Geometry: indication of "
                                                "whether the line is a "
-                                               "subdivision of a single survey "
-                                               "location. Area Geometry: "
+                                               "subdivision of a single survey"
+                                               " location. Area Geometry: "
                                                "indication of whether an area "
                                                "is a subdivision of a single "
                                                "survey location."))
@@ -216,7 +221,8 @@ class Location(models.Model):
                                  blank=True,
                                  choices=CHARACTER_CHOICES,
                                  help_text=_("Primary character of the survey "
-                                             "location's immediate surroundings."))
+                                             "location's immediate "
+                                             "surroundings."))
 
     def __str__(self):
         return self.primary_name
@@ -262,13 +268,14 @@ class Study(models.Model):
                                      null=True,
                                      blank=True,
                                      help_text=_("Project phase or stage at "
-                                                 "the time of the study. Leave "
-                                                 "blank if the study is not "
-                                                 "linked ot any other project."))
+                                                 "the time of the study. Leave"
+                                                 " blank if the study is not "
+                                                 "linked ot any other project."
+                                                 ))
     start_date = models.DateField(null=True,
                                   blank=True,
-                                  help_text=_("Date of the first survey taking "
-                                              "place within a study."))
+                                  help_text=_("Date of the first survey taking"
+                                              " place within a study."))
     end_date = models.DateField(null=True,
                                 blank=True,
                                 help_text=_("The date of the last survey "
@@ -298,7 +305,8 @@ class Study(models.Model):
                                         default='1.0',
                                         help_text=_("Version of the Public "
                                                     "Life Data Protocol that "
-                                                    "the study is written in."))
+                                                    "the study is written in."
+                                                    ))
     notes = models.TextField(null=True,
                              blank=True,
                              help_text=_("Notes that regard the entirety of "
@@ -329,25 +337,27 @@ class Survey(models.Model):
                           editable=False)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
-    time_start = models.DateTimeField(help_text=_("Exact date and time that the "
-                                                  "survey count started"),
+    time_start = models.DateTimeField(help_text=_("Exact date and time that "
+                                                  "the survey count started"),
                                       null=True,
                                       blank=True)
-    time_stop = models.DateTimeField(help_text=_("Exact date and time that the "
-                                                 "survey count stopped. Surveys of "
-                                                 "moving people should be no less "
-                                                 "than 10 minutes in length. "
-                                                 "Surveys of stationary people "
-                                                 "should be snapshots in time."),
+    time_stop = models.DateTimeField(help_text=_("Exact date and time that "
+                                                 "the survey count stopped. "
+                                                 "Surveys of moving people "
+                                                 "should be no less than 10 "
+                                                 "minutes in length. "
+                                                 "Surveys of stationary people"
+                                                 " should be snapshots in "
+                                                 "time."),
                                      null=True,
                                      blank=True)
     time_character = models.CharField(max_length=255,
                                       null=True,
                                       blank=True,
-                                      help_text=_("Indicate if anything out of "
-                                                  "the ordinary took place at "
-                                                  "the specific time of the "
-                                                  "survey count string that "
+                                      help_text=_("Indicate if anything out "
+                                                  "of the ordinary took place "
+                                                  "at the specific time of the"
+                                                  " survey count string that "
                                                   "may have impacted the "
                                                   "results."))
     representation = models.CharField(max_length=8,
@@ -389,8 +399,8 @@ class SurveyRow(models.Model):
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
     total = models.IntegerField(help_text=_("Indicate the number of people "
                                             "counted within the row. This "
-                                            "field is not an ID, but it should "
-                                            "be included with every survey."),
+                                            "field is not an ID, but it should"
+                                            " be included with every survey."),
                                 default=1)
 
     @property

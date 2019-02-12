@@ -1,19 +1,19 @@
 from django.utils.translation import ugettext as _
 
 # This is just a stubbed out module to get the beginnings of how we might want
-# to handle form validation together. Originally I had some of this logic in the
-# models and it was really not working over there and it seemed like the forms
-# might be a better place for it.
+# to handle form validation together. Originally I had some of this logic in
+# the models and it was really not working over there and it seemed like the
+# forms might be a better place for it.
 #
 # The thinking here is that, when a survey component is created, we'll save the
 # kind of component and the level of detail that we'll want to capture in the
-# responses. The catch is that, sometimes there is only one choice so we'll need
-# to make sure that when we are doing the form validation, we are using the
-# correct list of choices. The logic for that should live downstream of this
-# app. My feeling is that this app should only provide the basic tools for
+# responses. The catch is that, sometimes there is only one choice so we'll
+# need to make sure that when we are doing the form validation, we are using
+# the correct list of choices. The logic for that should live downstream of
+# this app. My feeling is that this app should only provide the basic tools for
 # storing info about a survey and data collected from a survey and if you want
-# to make a tool that makes surveys, you'll need to implement that logic in your
-# app.
+# to make a tool that makes surveys, you'll need to implement that logic in
+# your app.
 
 
 GENDER_TYPE_CHOICES = [
