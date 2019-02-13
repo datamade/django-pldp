@@ -69,46 +69,27 @@ def survey(location, study):
 
 
 @pytest.mark.django_db
-@pytest.mark.parametrize('components,detail_level,response_count', [
-    (['gender'], 'basic', 10,),
-    (['gender', 'age'], 'basic', 6,),
-    (['age'], 'detailed', 12,),
+@pytest.mark.parametrize('detail_level, response_count', [
+    ('detailed', 10,),
 ])
-def test_survey_creation(survey, components, detail_level, response_count):
-    pass
-    # all_counts = []
-    #
-    # for response in range(response_count):
-    #
-    #     total = random.choice(range(10))
-    #
-    #     row = SurveyRow.objects.create(survey=survey,
-    #                                    total=total)
-    #
-    #     counts = []
-    #
-    #     for component in components:
-    #
-    #         choice_level = '{}_{}_CHOICES'.format(component.upper(),
-    #                                               detail_level.upper())
-    #
-    #         choices = getattr(sys.modules[__name__], choice_level)
-    #         choice = random.choice(choices)[0]
-    #
-    #         counts.append({
-    #             'component': component,
-    #             'choice': choice,
-    #             'total': total,
-    #         })
-    #
-    #         comp_kwargs = {
-    #             component: choice,
-    #             'type_of_component': component,
-    #             'detail_level': detail_level,
-    #             'row': row,
-    #             'survey': survey,
-    #         }
-    #
-    #         comp = SurveyComponent.objects.create(**comp_kwargs)
-    #
-    #     all_counts.append(counts)
+def test_survey_creation(survey, detail_level, response_count):
+    for response in range(response_count):
+
+        total = random.choice(range(100))
+        row = SurveyRow.objects.create(survey=survey, total=total)
+
+        choice_level = 'AGE_{}_CHOICES'.format(detail_level.upper())
+        choices = getattr(sys.modules[__name__], choice_level)
+
+        age = random.choice(choices)[0]
+        count = random.choice(range(total))
+
+        comp_kwargs = {
+                        'detail_level': detail_level,
+                        'row': row,
+                        'survey': survey,
+                        'age': age,
+                        'count': count
+                        }
+
+        comp = SurveyComponentAge.objects.create(**comp_kwargs)
