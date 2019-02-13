@@ -6,8 +6,7 @@ DATABASES = {
         'NAME': 'pldp',
         'USER': '',
         'PASSWORD': '',
-        'HOST': '',
-        'PORT': '5432',
+        'PORT': 5432,
     }
 }
 
@@ -15,11 +14,11 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'countries_plus',
     'languages_plus',
-    'pldp',
-)
-
-ALLOWED_HOSTS = (
-    'localhost',
+    'pldp.core',
+    'pldp.location',
+    'pldp.agency',
+    'pldp.study',
+    'pldp.survey',
 )
 
 MIDDLEWARE_CLASSES = ()
