@@ -100,6 +100,12 @@ You should now be able to use `django-pldp` in your project!
 
 `django-admin migrate`
 
+## Team
+
+-   [Bea Malsky](https://github.com/beamalsky)
+-   [Regina Compton](https://github.com/reginafcompton)
+-   [Eric van Zanten](https://github.com/evz)
+
 
 ## Copyright
 
