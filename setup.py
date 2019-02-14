@@ -1,7 +1,7 @@
 import os
 from setuptools import setup
 
-with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
+with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
     README = readme.read()
 
 # allow setup.py to be run from any path
@@ -18,7 +18,10 @@ setup(
     url='https://datamade.us/',
     author='DataMade, LLC',
     author_email='info@datamade.us',
-    install_requires=['Django<2.2'],
+    install_requires=[
+        'Django<2.2',
+        'django-languages-plus==1.0.0',
+    ],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

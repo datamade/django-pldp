@@ -1,3 +1,0 @@
--e .
-flake8
-pytest-django==3.4.4
