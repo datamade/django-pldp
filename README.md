@@ -90,15 +90,21 @@ You should now be able to use `django-pldp` in your project!
 
 4. Export the Django settings:
 
-`export DJANGO_SETTINGS_MODULE=tests.test_config`
+    ```bash
+    export DJANGO_SETTINGS_MODULE=tests.test_config
+    ```
 
 4. Create a database:
 
-`createdb pldp`
+    ```bash
+    createdb pldp
+    ```
 
 5. Run migrations:
 
-`django-admin migrate`
+    ```bash
+    django-admin migrate
+    ```
 
 ## Team
 
