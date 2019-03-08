@@ -33,40 +33,37 @@ AGE_TYPE_CHOICES = [
     ('complex', _('Complex choices')),
 ]
 AGE_BASIC_CHOICES = [
-    ('0-14', _('Child')),
-    ('15-24', _('Teen or young adult')),
-    ('25-64', _('Adult')),
-    ('65+', _('Senior')),
+    ('0-14', _('0-14')),
+    ('15-24', _('15-24')),
+    ('25-64', _('25-64')),
+    ('65+', _('65+')),
 ]
 AGE_DETAILED_CHOICES = [
-    ('0-4', _('Infant or young child')),
-    ('5-14', _('Child')),
-    ('15-24', _('Teen or young adult')),
-    ('25-44', _('Adult')),
-    ('45-64', _('Mature adult')),
-    ('65-74', _('Young senior')),
-    ('75+', _('Mature senior')),
+    ('0-4', _('0-4')),
+    ('5-14', _('5-14')),
+    ('15-24', _('15-24')),
+    ('25-44', _('25-44')),
+    ('45-64', _('45-64')),
+    ('65-74', _('65-74')),
+    ('75+', _('75+')),
 ]
 AGE_COMPLEX_CHOICES = [
-    ('0-4', _('Infant or toddler')),
-    ('5-9', _('Pre-schooler / Early childhood')),
-    ('10-14', _('General school / Preadolescence / Late childhood')),
-    ('15-17', _('Teens / Adolescence')),
-    ('18-24', _('Early adult / Young adult')),
-    ('25-34', _('Early adult / Adult')),
-    ('35-44', _('Adult')),
-    ('45-54', _('Adult / Middle aged / Midlife')),
-    ('55-64', _('Mature Adult')),
-    ('65-74', _('Young senior / Late adult')),
-    ('75+', _('Mature senior')),
+    ('0-4', _('0-4')),
+    ('5-9', _('5-9')),
+    ('10-14', _('10-14')),
+    ('15-17', _('15-17')),
+    ('18-24', _('18-24')),
+    ('25-34', _('25-34')),
+    ('35-44', _('35-44')),
+    ('45-54', _('45-54')),
+    ('55-64', _('55-64')),
+    ('65-74', _('65-74')),
+    ('75+', _('75+')),
 ]
-COMPONENT_CHOICES = [
-    ('gender', _('Gender')),
-    ('age', _('Age')),
-    ('mode', _('Mode')),
-    ('posture', _('Posture')),
-    ('activities', _('Activities')),
-    ('groups', _('Groups')),
-    ('objects', _('Objects')),
-    ('geotag', _('GeoTag')),
+
+# Choices for SurveyComponentMode
+MODE_TYPE_CHOICES = [
+    ('basic', _('Basic choices')),
+    ('detailed', _('Detailed choices')),
+    ('complex', _('Complex choices')),
 ]
