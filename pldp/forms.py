@@ -15,6 +15,26 @@ from django.utils.translation import ugettext as _
 # to make a tool that makes surveys, you'll need to implement that logic in
 # your app.
 
+# Survey metadata
+SURVEY_REPRESENTATION_CHOICES = [
+    ('absolute', _("Absolute")),
+    ('relative', _("Relative"))
+]
+
+SURVEY_METHOD_CHOICES = [
+    ("analog", _("Analog")),
+    ("video", _("Video")),
+    ("motion sensor", _("Motion sensor")),
+    ("pressure sensor", _("Pressure sensor")),
+    ("Wi-Fi signal", _("Wi-Fi signal")),
+    ("GPS", _("GPS")),
+    ("radar", _("Radar")),
+    ("cell tower", _("Cell tower")),
+    ("digital application", _("Digital application")),
+    ("drone", _("Drone")),
+    ("road tubes", _("Road tubes")),
+]
+
 # Choices for SurveyComponentGender
 GENDER_TYPE_CHOICES = [
     ('basic', _('Basic choices')),

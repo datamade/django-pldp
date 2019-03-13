@@ -6,21 +6,9 @@ from django.utils.translation import ugettext as _
 from .location import Location
 from .study import Study
 
-class Survey(models.Model):
-    METHOD_CHOICES = [
-        ("analog", _("Analog")),
-        ("video", _("Video")),
-        ("motion sensor", _("Motion sensor")),
-        ("pressure sensor", _("Pressure sensor")),
-        ("Wi-Fi signal", _("Wi-Fi signal")),
-        ("GPS", _("GPS")),
-        ("radar", _("Radar")),
-        ("cell tower", _("Cell tower")),
-        ("digital application", _("Digital application")),
-        ("drone", _("Drone")),
-        ("road tubes", _("Road tubes")),
-    ]
+from pldp.forms import SURVEY_METHOD_CHOICES, SURVEY_REPRESENTATION_CHOICES
 
+class Survey(models.Model):
     id = models.UUIDField(primary_key=True,
                           default=uuid.uuid4,
                           editable=False)
@@ -49,8 +37,7 @@ class Survey(models.Model):
                                                   "may have impacted the "
                                                   "results."))
     representation = models.CharField(max_length=8,
-                                      choices=[('absolute', _("Absolute")),
-                                               ('relative', _("Relative"))],
+                                      choices=SURVEY_REPRESENTATION_CHOICES,
                                       help_text=_("Indicate whether the data "
                                                   "collected a total of the "
                                                   "people present within the "
@@ -69,7 +56,7 @@ class Survey(models.Model):
                                                     "location at the time of "
                                                     "the survey count."))
     method = models.CharField(max_length=20,
-                              choices=METHOD_CHOICES,
+                              choices=SURVEY_METHOD_CHOICES,
                               help_text=_("Description of the survey count "
                                           "method"))
 
