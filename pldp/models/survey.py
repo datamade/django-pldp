@@ -87,6 +87,7 @@ class SurveyRow(models.Model):
         return response
 
 class SurveyComponent(models.Model):
+
     DETAIL_CHOICES = [
         ('basic', _('Basic choices')),
         ('detailed', _('Detailed choices')),
@@ -127,7 +128,7 @@ class SurveyComponent(models.Model):
     )
 
     class Meta:
-        abstract = True
+        abstract = False
 
     @property
     def choice(self):

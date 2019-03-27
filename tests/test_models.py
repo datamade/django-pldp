@@ -6,7 +6,7 @@ import pytest
 from django.core.management import call_command
 
 from countries_plus.models import Country
-from pldp.models import Agency, Survey, SurveyRow, SurveyComponentAge, StudyArea, \
+from pldp.models import Agency, Survey, SurveyRow, SurveyComponent, StudyArea, \
     Study, Location, LocationLine
 from pldp.forms import GENDER_BASIC_CHOICES, AGE_BASIC_CHOICES, \
     AGE_DETAILED_CHOICES, AGE_COMPLEX_CHOICES
@@ -65,6 +65,7 @@ def study(study_area, agency):
 def survey(location, study):
     return Survey.objects.create(study=study,
                                  location=location,
+                                 form_id=1,
                                  method='analog')
 
 
@@ -82,14 +83,20 @@ def test_survey_creation(survey, detail_level, response_count):
         choices = getattr(sys.modules[__name__], choice_level)
 
         age = random.choice(choices)[0]
-        count = random.choice(range(total))
+        name = "Test name"
+        label = "Test label"
+        type = "Test type"
+        position = 1
+        saved_data = "Test saved data"
 
         comp_kwargs = {
                         'detail_level': detail_level,
                         'row': row,
-                        'survey': survey,
-                        'age': age,
-                        'count': count
+                        'name': name,
+                        'label': label,
+                        'type': type,
+                        'position': position,
+                        'saved_data': saved_data
                         }
 
-        comp = SurveyComponentAge.objects.create(**comp_kwargs)
+        comp = SurveyComponent.objects.create(**comp_kwargs)
