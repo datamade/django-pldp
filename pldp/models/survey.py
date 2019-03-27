@@ -13,7 +13,7 @@ class Survey(models.Model):
                           default=uuid.uuid4,
                           editable=False)
     form_id = models.IntegerField(help_text=_("ID number of the form used "
-                                                 "to submit this survey.")
+                                                 "to submit this survey."))
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
     time_start = models.DateTimeField(help_text=_("Exact date and time that "
