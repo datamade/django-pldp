@@ -12,7 +12,7 @@ class Survey(models.Model):
     id = models.UUIDField(primary_key=True,
                           default=uuid.uuid4,
                           editable=False)
-    form_entry = models.IntegerField(help_text=_("ID number of the form used "
+    form_id = models.IntegerField(help_text=_("ID number of the form used "
                                                  "to submit this survey.")
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
