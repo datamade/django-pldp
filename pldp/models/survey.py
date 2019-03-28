@@ -118,7 +118,6 @@ class SurveyComponent(models.Model):
     )
 
     position = models.IntegerField(
-        max_length=500,
         help_text=_('The position of this question in the survey'),
     )
 
