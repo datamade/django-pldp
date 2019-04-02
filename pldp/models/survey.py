@@ -123,7 +123,9 @@ class SurveyComponent(models.Model):
 
     saved_data = models.CharField(
         max_length=500,
-        help_text=_('The submitted answer to this survey question'),
+        help_text=_('The submitted answer(s) to this survey question'),
+        null=True,
+        blank=True,
     )
 
     class Meta:
