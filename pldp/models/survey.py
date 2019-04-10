@@ -8,12 +8,13 @@ from .study import Study
 
 from pldp.forms import SURVEY_METHOD_CHOICES, SURVEY_REPRESENTATION_CHOICES
 
+
 class Survey(models.Model):
     id = models.UUIDField(primary_key=True,
                           default=uuid.uuid4,
                           editable=False)
     form_id = models.IntegerField(help_text=_("ID number of the form used "
-                                                 "to submit this survey."))
+                                              "to submit this survey."))
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
     time_start = models.DateTimeField(help_text=_("Exact date and time that "
@@ -62,12 +63,19 @@ class Survey(models.Model):
                               help_text=_("Description of the survey count "
                                           "method"))
 
-    def totals(self, query_filters=[]):
+    @property
+    def row(self):
+        row = SurveyRow.objects.get(survey=self)
+        return row
 
-        # Takes in a list of ways you'd like to filter the survey results and
-        # returns a count by component, by choice
-
-        pass
+    @property
+    def components(self):
+        components = SurveyComponent.objects.filter(
+                        row=self.row
+                     ).order_by(
+                        'position'
+                     )
+        return components
 
 
 class SurveyRow(models.Model):
@@ -86,8 +94,8 @@ class SurveyRow(models.Model):
 
         return response
 
-class SurveyComponent(models.Model):
 
+class SurveyComponent(models.Model):
     DETAIL_CHOICES = [
         ('basic', _('Basic choices')),
         ('detailed', _('Detailed choices')),
@@ -130,7 +138,3 @@ class SurveyComponent(models.Model):
 
     class Meta:
         abstract = False
-
-    @property
-    def choice(self):
-        return getattr(self, self.type)
