@@ -17,7 +17,7 @@ from django.utils.translation import ugettext as _
 
 # Survey metadata
 SURVEY_TIME_CHARACTER_CHOICES = [
-    ('', _(''))
+    ('', _('')),
     ('cultural/communal event', _('Cultural/Communal Event')),
     ('political/religious activity', _('Political/Religious Activity')),
     ('commercial event', _('Commercial Event')),
