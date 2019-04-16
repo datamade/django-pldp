@@ -16,23 +16,48 @@ from django.utils.translation import ugettext as _
 # your app.
 
 # Survey metadata
+SURVEY_TIME_CHARACTER_CHOICES = [
+    ('None', _('None')),
+    ('cultural/communal event', _('Cultural/Communal Event')),
+    ('political/religious activity', _('Political/Religious Activity')),
+    ('commercial event', _('Commercial Event')),
+    ('national/local holiday', _('National/Local Holiday')),
+    ('accident/emergency', _('Accident/Emergency')),
+    ('roadwork/construction', _('Roadwork/Construction'))
+]
+
 SURVEY_REPRESENTATION_CHOICES = [
-    ('absolute', _("Absolute")),
-    ('relative', _("Relative"))
+    ('absolute', _('Absolute')),
+    ('relative', _('Relative'))
+]
+
+SURVEY_MICROCLIMATE_CHOICES = [
+    ('sun - exposed', _('Sun - Exposed')),
+    ('sun - shaded', _('Sun - Shaded')),
+    ('light clouds', _('Light Clouds')),
+    ('heavy clouds', _('Heavy Clouds')),
+    ('light rain', _('Light Rain')),
+    ('heavy rain', _('Heavy Rain')),
+    ('fog', _('Fog')),
+    ('light wind', _('Light Wind')),
+    ('heavy wind', _('Heavy Wind')),
+    ('thunder', _('Thunder')),
+    ('light snow', _('Light Snow')),
+    ('heavy snow', _('Heavy Snow')),
 ]
 
 SURVEY_METHOD_CHOICES = [
-    ("analog", _("Analog")),
-    ("video", _("Video")),
-    ("motion sensor", _("Motion sensor")),
-    ("pressure sensor", _("Pressure sensor")),
-    ("Wi-Fi signal", _("Wi-Fi signal")),
-    ("GPS", _("GPS")),
-    ("radar", _("Radar")),
-    ("cell tower", _("Cell tower")),
-    ("digital application", _("Digital application")),
-    ("drone", _("Drone")),
-    ("road tubes", _("Road tubes")),
+    ('analog', _('Analog')),
+    ('video', _('Video')),
+    ('motion sensor', _('Motion sensor')),
+    ('pressure sensor', _('Pressure sensor')),
+    ('Wi-Fi signal', _('Wi-Fi signal')),
+    ('GPS', _('GPS')),
+    ('radar', _('Radar')),
+    ('cell tower', _('Cell tower')),
+    ('digital application', _('Digital application')),
+    ('drone', _('Drone')),
+    ('road tubes', _('Road tubes')),
 ]
 
 # Choices for SurveyComponentGender
