@@ -198,3 +198,120 @@ POSTURE_DETAILED_CHOICES = [
     ('multiple_heavy', _('In multiple postures due to a heavy amount of \
         physical activity (e.g. exercising, playing)')),
 ]
+
+# Choices for activity_observational question
+ACTIVITY_TYPE_CHOICES = [
+    ('basic', _('Basic choices')),
+    ('detailed', _('Detailed choices')),
+]
+
+ACTIVITY_BASIC_CHOICES = [
+    ('commercial', _('Buying or selling goods')),
+    ('consuming', _('Consuming food or drink')),
+    ('conversing', _('Conversing with another person')),
+    ('cultural', _('Participating in or observing a cultural activity of either \
+        artistic, communal, political, or religious character')),
+    ('disruptive', _('Displaying abusive behavior, intoxication, or visibly \
+        ingesting alcohol or drugs')),
+    ('electronic_engagement', _('Engaging with technology or electronics')),
+    ('living_public', _('Engaging in otherwise private sanitary activities \
+        within the public realm or encamping, lying, or sleeping in an \
+        undesignated camping/sleeping location')),
+    ('recreation_active', _('Active recreation (e.g. exercising or playing)')),
+    ('recreation_passive', _('Passive recreation (e.g. reading, painting, or \
+        sightseeing)')),
+    ('smoking', _('Smoking')),
+    ('soliciting', _('Soliciting')),
+    ('waiting_transfer', _('Waiting for transportation')),
+    ('waiting_other', _('Waiting (other)')),
+    ('working_civic', _('Working to upkeep or take care of the public space')),
+]
+
+ACTIVITY_DETAILED_CHOICES = [
+    ('commercial_providing', _('Selling goods')),
+    ('commercial_participating', _('Buying goods or observing goods being \
+        sold')),
+    ('consuming', _('Consuming food or drink')),
+    ('conversing', _('Conversing with another person')),
+    ('cultural_providing', _('Participating in a cultural activity of either \
+        artistic, communal, political, or religious character')),
+    ('cultural_participating', _('Observing a cultural activity of either \
+        artistic, communal, political, or religious character')),
+    ('disruptive_aggressive', _('Displaying abusive behaviour')),
+    ('disruptive_intoxicated', _('Visibly ingesting alcohol or drugs in an \
+        unsanctioned context or showing clear signs of uncontrolled \
+        intoxication')),
+    ('electronic_engagement_introverted', _('Engaging with technology or \
+        electronics in an introverted fashion (e.g. listening to music with \
+        earbuds, typing on a computer, or charging a device)')),
+    ('electronic_engagement_extroverted', _('Engaging with technology or \
+        electronics in an extroverted fasion (e.g. playing audio from \
+        speakers or taking photos)')),
+    ('living_public_sanitising', _('Engaging in otherwise private sanitary activities \
+        within the public realm (e.g. urinating or showering)')),
+    ('living_public_encamping', _('Encamping, lying, or sleeping in an \
+        undesignated camping/sleeping location')),
+    ('recreation_active_exercising', _('Exercising')),
+    ('recreation_active_playing', _('Physically active playing')),
+    ('recreation_passive_observing', _('Observing (e.g. other \
+        people, activities, landmarks, buildings, nature, or landscapes')),
+    ('recreation_passive_playing', _('Playing passive, analogue, stationary \
+        games (e.g. a board or card game)')),
+    ('recreation_passive_affectionate', _('Showing physical affection towards \
+        another person')),
+    ('recreation_passive_reading', _('Reading a printed newspaper or book or \
+        writing in a notebook')),
+    ('recreation_passive_creating', _('Engaging in a creative activity for \
+        personal use or purpose, like creating a drawing or painting, or \
+        playing music for one\'s personal enjoyment')),
+    ('recreation_passive_resting', _('Sleeping, relaxing, or hanging out \
+        for recreational purposes and in areas designated for resting like a \
+        beach, park, or street bench')),
+    ('smoking', _('Smoking')),
+    ('soliciting_begging', _('Begging')),
+    ('soliciting_campaigning', _('Campaigning')),
+    ('soliciting_sex_work', _('Requesting or providing sex work')),
+    ('waiting_transfer_public', _('Waiting for public transportation')),
+    ('waiting_transfer_private', _('Waiting for private transportation \
+        (e.g. a car)')),
+    ('waiting_transfer_commercial', _('Waiting for a taxi or rideshare')),
+    ('waiting_other_interrupted', _('Waiting for traffic or at a red light, \
+        midblock, or other, in order to continue a journey through the \
+        space')),
+    ('waiting_other_wayfinding', _('Waiting to find a route or destination')),
+    ('working_civic', _('Working to upkeep or take care of the public space')),
+]
+
+# Choices for objects_observational question
+OBJECTS_TYPE_CHOICES = [
+    ('basic', _('Basic choices')),
+]
+
+OBJECTS_BASIC_CHOICES = [
+    ('animal', _('Carrying or watching over a domestic animal')),
+    ('bag_carried', _('Carrying a bag or larger personal belonging')),
+    ('clothing_cultural_symbols', _('Wearing or carrying clothing of \
+        perceived religious character')),
+    ('clothing_activity_symbols', _('Wearing or carrying clothing of \
+        perceived active character')),
+    ('goods_carried', _('Carrying or delivering goods, typically \
+        moving house or delivering to a private or commercial \
+        establishment')),
+    ('equipment_construction', _('Carrying equipment for use in a \
+        construction project')),
+    ('equipment_recreational', _('Carrying equipment for recreational \
+        use')),
+    ('equipment_sport', _('Carrying equipment that is perceived to be for use \
+        when exercising or playing')),
+    ('protection_safety', _('Wearing a piece of safety equipment \
+        (e.g. a bike helmet, construction helmet, or gas mask)')),
+    ('protection_weather', _('Carrying an object that is intended to \
+        protect from weather-related discomfort (e.g. umbrella or snow \
+        shovel)')),
+    ('furniture_carried', _('Carrying a piece of furniture')),
+    ('transportation_carried', _('Carrying (not riding) a personal \
+        conveyance (e.g. a skateboard, rollerblades, or bicycle)')),
+    ('transportation_stationary', _('Using an object of transportation \
+        for stationary support (e.g. a walker, wheelchair, or shopping \
+        cart)')),
+]
