@@ -60,7 +60,7 @@ SURVEY_METHOD_CHOICES = [
     ('road tubes', _('Road tubes')),
 ]
 
-# Choices for SurveyComponentGender
+# Choices for gender_observational question
 GENDER_TYPE_CHOICES = [
     ('basic', _('Basic choices')),
 ]
@@ -71,7 +71,7 @@ GENDER_BASIC_CHOICES = [
     ('unknown', _('Unknown')),
 ]
 
-# Choices for SurveyComponentAge
+# Choices for age_observational question
 AGE_TYPE_CHOICES = [
     ('basic', _('Basic choices')),
     ('detailed', _('Detailed choices')),
@@ -106,9 +106,94 @@ AGE_COMPLEX_CHOICES = [
     ('75+', _('75+')),
 ]
 
-# Choices for SurveyComponentMode
+# Choices for mode_observational question
 MODE_TYPE_CHOICES = [
     ('basic', _('Basic choices')),
     ('detailed', _('Detailed choices')),
-    ('complex', _('Complex choices')),
+]
+
+MODE_BASIC_CHOICES = [
+    ('pedestrian', _('Pedestrian')),
+    ('bicyclist', _('Bicyclist')),
+    ('animal', _('Moving by animal')),
+    ('snow', _('Moving in snow')),
+    ('water', _('Moving by water')),
+    ('vehicle', _('Moving by vehicle')),
+]
+
+MODE_DETAILED_CHOICES = [
+    ('pedestrian_walking', _('Pedestrian walking')),
+    ('pedestrian_running', _('Pedestrian running')),
+    ('pedestrian_supported', _('Pedestrian supported (e.g. by cane, crutches, \
+        or a wheelchair)')),
+    ('pedestrian_carried', _('Pedestrian carried (e.g. by stroller, cart, \
+        or another pedestrian)')),
+    ('pedestrian_rolling', _('Pedestrian rolling (e.g. with a scooter, \
+        skateboard, or rollerblades)')),
+    ('bicyclist_private_individual', _('Bicyclist, private individual')),
+    ('bicyclist_private_multiple', _('Bicyclist, private multiple \
+        (e.g. tandem bike)')),
+    ('bicyclist_commercial_individual', _('Bicyclist, commercial individual')),
+    ('bicyclist_commercial_multiple', _('Bicyclist, commercial multiple \
+        (e.g. pedicab, rickshaw)')),
+    ('animal_riding', _('Riding an animal')),
+    ('animal_carriage', _('Moving by animal carriage')),
+    ('snow_manual', _('Moving in snow manually (e.g. by ski, snowboard, or \
+        sled)')),
+    ('snow_powered', _('Moving in a powered snow vehicle \
+        (e.g. by snowmobile)')),
+    ('water_no_vessel', _('Moving by water, no vessel (e.g. swimming)')),
+    ('water_small_vessel', _('Moving by water, small vessel (e.g. canoe, \
+        kayak, or surfboard)')),
+    ('water_medium_vessel', _('Moving by water, medium vessel (e.g. by \
+        sailboat or motorboat)')),
+    ('water_large_vessel', _('Moving by water, large vessel (e.g. by ship, \
+        yacht, or ferry)')),
+    ('vehicle_private', _('Moving by private vehicle (e.g. by automobile \
+        or motorcycle)')),
+    ('vehicle_commercial', _('Moving by commercial vehicle (e.g. by taxi or \
+        rideshare)')),
+    ('vehicle_public', _('Moving by public vehicle (e.g. by bus or train)')),
+]
+
+# Choices for posture_observational question
+POSTURE_TYPE_CHOICES = [
+    ('basic', _('Basic choices')),
+    ('detailed', _('Detailed choices')),
+]
+
+POSTURE_BASIC_CHOICES = [
+    ('standing', _('Standing')),
+    ('sitting_formal', _('Sitting formally')),
+    ('sitting_informal', _('Sitting informally, in places not intended for \
+        sitting')),
+    ('lying', _('Lying')),
+    ('multiple', _('In multiple postures')),
+]
+
+POSTURE_DETAILED_CHOICES = [
+    ('standing', _('Standing')),
+    ('leaning', _('Leaning')),
+    ('sitting_formal_commercial', _('Sitting on furniture owned by a commercial \
+        establishment.')),
+    ('sitting_formal_private', _('Sitting on privately owned furniture')),
+    ('sitting_formal_office', _('Sitting on furniture owned by a company and intended \
+        for use by its employees')),
+    ('sitting_formal_support', _('Sitting on a stroller, wheelchair, or \
+        walker')),
+    ('sitting_formal_public_fixed', _('Sitting on a fixed object intended as seating \
+        and provided for the general public such as a bench or picnic table')),
+    ('sitting_formal_public_movable', _('Sitting on a movable object intended as seating \
+        and provided for the general public such as a chair')),
+    ('sitting_informal_ground', _('Sitting on the ground')),
+    ('sitting_informal_object', _('Sitting on objects not designed for \
+        sitting')),
+    ('sitting_informal_architecture', _('Sitting on pieces of architecture not \
+        designed for sitting')),
+    ('lying_ground', _('Lying down on the ground')),
+    ('lying_furniture', _('Lying down on a piece of furniture')),
+    ('multiple_light', _('In multiple postures due to a light amount of \
+        physical activity (e.g. walking dog, gardening)')),
+    ('multiple_heavy', _('In multiple postures due to a heavy amount of \
+        physical activity (e.g. exercising, playing)')),
 ]
