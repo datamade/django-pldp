@@ -133,7 +133,8 @@ MODE_DETAILED_CHOICES = [
     ('bicyclist_private_individual', _('Bicyclist, private individual')),
     ('bicyclist_private_multiple', _('Bicyclist, private multiple \
         (e.g. tandem bike)')),
-    ('bicyclist_commercial_individual', _('Bicyclist, commercial individual')),
+    ('bicyclist_commercial_individual', _('Bicyclist, commercial individual \
+        (e.g. bikeshare)')),
     ('bicyclist_commercial_multiple', _('Bicyclist, commercial multiple \
         (e.g. pedicab, rickshaw)')),
     ('animal_riding', _('Riding an animal')),
@@ -143,7 +144,7 @@ MODE_DETAILED_CHOICES = [
     ('snow_powered', _('Moving in a powered snow vehicle \
         (e.g. by snowmobile)')),
     ('water_no_vessel', _('Moving by water, no vessel (e.g. swimming)')),
-    ('water_small_vessel', _('Moving by water, small vessel (e.g. canoe, \
+    ('water_small_vessel', _('Moving by water, small vessel (e.g. by canoe, \
         kayak, or surfboard)')),
     ('water_medium_vessel', _('Moving by water, medium vessel (e.g. by \
         sailboat or motorboat)')),
@@ -164,9 +165,9 @@ POSTURE_TYPE_CHOICES = [
 
 POSTURE_BASIC_CHOICES = [
     ('standing', _('Standing')),
-    ('sitting_formal', _('Sitting formally')),
-    ('sitting_informal', _('Sitting informally, in places not intended for \
-        sitting')),
+    ('sitting_formal', _('Sitting formally (in places intended for sitting)')),
+    ('sitting_informal', _('Sitting informally (in places not intended for \
+        sitting)')),
     ('lying', _('Lying')),
     ('multiple', _('In multiple postures')),
 ]
