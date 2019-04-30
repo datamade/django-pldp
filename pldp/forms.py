@@ -223,7 +223,7 @@ ACTIVITY_BASIC_CHOICES = [
     ('smoking', _('Smoking')),
     ('soliciting', _('Soliciting')),
     ('waiting_transfer', _('Waiting for transportation')),
-    ('waiting_other', _('Waiting, other')),
+    ('waiting_other', _('Waiting (other)')),
     ('working_civic', _('Working to upkeep or take care of the public space')),
 ]
 
@@ -237,8 +237,7 @@ ACTIVITY_DETAILED_CHOICES = [
         artistic, communal, political, or religious character')),
     ('cultural_participating', _('Observing a cultural activity of either \
         artistic, communal, political, or religious character')),
-    ('disruptive_aggressive', _('Displaying abusive behaviour towards another \
-        person or to no one in particular.')),
+    ('disruptive_aggressive', _('Displaying abusive behaviour')),
     ('disruptive_intoxicated', _('Visibly ingesting alcohol or drugs in an \
         unsanctioned context or showing clear signs of uncontrolled \
         intoxication')),
@@ -254,13 +253,12 @@ ACTIVITY_DETAILED_CHOICES = [
         undesignated camping/sleeping location')),
     ('recreation_active_exercising', _('Exercising')),
     ('recreation_active_playing', _('Physically active playing')),
-    ('recreation_passive_observing', _('Actively or intentionally observing \
-        other people, activities, landmarks, buildings, nature, landscape, or \
-        other')),
+    ('recreation_passive_observing', _('Observing (e.g. other \
+        people, activities, landmarks, buildings, nature, or landscapes')),
     ('recreation_passive_playing', _('Playing passive, analogue, stationary \
-        games, like a board  or card game')),
+        games (e.g. a board or card game)')),
     ('recreation_passive_affectionate', _('Showing physical affection towards \
-        another person.')),
+        another person')),
     ('recreation_passive_reading', _('Reading a printed newspaper or book or \
         writing in a notebook')),
     ('recreation_passive_creating', _('Engaging in a creative activity for \
@@ -290,30 +288,30 @@ OBJECTS_TYPE_CHOICES = [
 ]
 
 OBJECTS_BASIC_CHOICES = [
-    ('animal', _('People carrying or watching over a domestic animal')),
-    ('bag_carried', _('People carrying a bag or larger personal belonging')),
-    ('clothing_cultural_symbols', _('People wearing or carrying clothing of \
+    ('animal', _('Carrying or watching over a domestic animal')),
+    ('bag_carried', _('Carrying a bag or larger personal belonging')),
+    ('clothing_cultural_symbols', _('Wearing or carrying clothing of \
         perceived religious character')),
-    ('clothing_activity_symbols', _('People wearing or carrying clothing of \
+    ('clothing_activity_symbols', _('Wearing or carrying clothing of \
         perceived active character')),
-    ('goods_carried', _('People carrying or delivering goods, typically \
+    ('goods_carried', _('Carrying or delivering goods, typically \
         moving house or delivering to a private or commercial \
         establishment')),
-    ('equipment_construction', _('People carrying equipment for use in a \
+    ('equipment_construction', _('Carrying equipment for use in a \
         construction project')),
-    ('equipment_recreational', _('People carrying equipment for recreational \
+    ('equipment_recreational', _('Carrying equipment for recreational \
         use')),
-    ('equipment_sport', _('People carrying equipment that is perceived to be for use \
+    ('equipment_sport', _('Carrying equipment that is perceived to be for use \
         when exercising or playing')),
-    ('protection_safety', _('People wearing a piece of safety equipment \
+    ('protection_safety', _('Wearing a piece of safety equipment \
         (e.g. a bike helmet, construction helmet, or gas mask)')),
-    ('protection_weather', _('People carrying an object that is intended to \
+    ('protection_weather', _('Carrying an object that is intended to \
         protect from weather-related discomfort (e.g. umbrella or snow \
         shovel)')),
-    ('furniture_carried', _('People carrying a piece of furniture')),
-    ('transportation_carried', _('People carrying (not riding) a personal \
+    ('furniture_carried', _('Carrying a piece of furniture')),
+    ('transportation_carried', _('Carrying (not riding) a personal \
         conveyance (e.g. a skateboard, rollerblades, or bicycle)')),
-    ('transportation_stationary', _('People using an object of transpiration \
+    ('transportation_stationary', _('Using an object of transportation \
         for stationary support (e.g. a walker, wheelchair, or shopping \
         cart)')),
 ]
