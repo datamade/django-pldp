@@ -84,7 +84,8 @@ class SurveyRow(models.Model):
                                             "counted within the row. This "
                                             "field is not an ID, but it should"
                                             " be included with every survey."),
-                                default=1)
+                                null=True,
+                                blank=True)
 
     @property
     def response(self):
