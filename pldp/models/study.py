@@ -1,14 +1,23 @@
 import uuid
 
 from django.contrib.gis.db import models
+from django.db.models import Manager as GeoManager
 from django.utils.translation import ugettext as _
 
 from .agency import Agency
 
+
 class StudyArea(models.Model):
     name = models.CharField(max_length=1000,
                             help_text=_("Name of the study area"))
-    area = models.GeometryField(srid=4326)
+    area = models.PolygonField(help_text=_("Draw boundaries above to create "
+                                           "a new study area or paste in "
+                                           "a raw GeoJSON string. Studies can "
+                                           "be linked to multiple areas, and "
+                                           "a study can be made up of "
+                                           "multiple surveys."))
+
+    objects = GeoManager()
 
     def __str__(self):
         return self.name
@@ -27,17 +36,19 @@ class Study(models.Model):
     id = models.UUIDField(primary_key=True,
                           default=uuid.uuid4,
                           editable=False)
-    agency = models.ForeignKey(Agency, on_delete=models.CASCADE)
+    agency = models.ForeignKey(Agency,
+                               help_text=_("Agency conducting the study."),
+                               on_delete=models.CASCADE)
     title = models.CharField(max_length=1000,
                              blank=True,
-                             help_text=_("Title or name of the study as given "
-                                         "by the conducting agency."))
+                             help_text=_("Title or name of the study as "
+                                         "given by the conducting agency."))
     project = models.CharField(max_length=1000,
                                blank=True,
-                               help_text=_("Title or name of the project that "
-                                           "the study is part of. Leave blank "
-                                           "if the study is not linked to any "
-                                           "other project."))
+                               help_text=_("Title or name of the project "
+                                           "that the study is part of. Leave "
+                                           "blank if the study is not linked "
+                                           "to any other project."))
     project_phase = models.CharField(max_length=100,
                                      blank=True,
                                      help_text=_("Project phase or stage at "
@@ -51,21 +62,22 @@ class Study(models.Model):
                                               " place within a study."))
     end_date = models.DateField(null=True,
                                 blank=True,
-                                help_text=_("The date of the last survey "
+                                help_text=_("Date of the last survey "
                                             "taking place within a study"))
     scale = models.CharField(max_length=12,
                              choices=SCALE_CHOICES,
                              blank=True,
                              help_text=_("Approximate scale of the entire "
-                                         "study area, irregardless of the "
-                                         "amount of survey locations within "
+                                         "study area, regardless of the "
+                                         "number of survey locations within "
                                          "that study area."))
     areas = models.ManyToManyField(StudyArea,
                                    help_text=_("Area geometries for surveys "
-                                               "bundles together within one "
+                                               "bundled together within one "
                                                "larger study. Leave blank if "
                                                "no such sub-division is "
-                                               "necessary."))
+                                               "necessary."),
+                                   blank=True)
     manager_name = models.CharField(max_length=1000,
                                     help_text=_("Name of the person in charge "
                                                 "of the study"))
