@@ -35,6 +35,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='studyarea',
             name='area',
-            field=django.contrib.gis.db.models.fields.PolygonField(help_text='Draw boundaries above to create a new study area or paste in a raw GeoJSON string. Studies can be linked to multiple areas, and a study can be made up of multiple surveys.', srid=4326),
+            field=django.contrib.gis.db.models.fields.PolygonField(help_text='Draw boundaries above to create a new study area. Studies can be linked to multiple areas, and a study can be made up of multiple surveys.', srid=4326),
         ),
     ]

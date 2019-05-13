@@ -11,8 +11,7 @@ class StudyArea(models.Model):
     name = models.CharField(max_length=1000,
                             help_text=_("Name of the study area"))
     area = models.PolygonField(help_text=_("Draw boundaries above to create "
-                                           "a new study area or paste in "
-                                           "a raw GeoJSON string. Studies can "
+                                           "a new study area. Studies can "
                                            "be linked to multiple areas, and "
                                            "a study can be made up of "
                                            "multiple surveys."))
