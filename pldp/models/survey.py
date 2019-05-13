@@ -18,7 +18,7 @@ class Survey(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
     time_start = models.DateTimeField(help_text=_("Exact date and time that "
-                                                  "the survey count started"),
+                                                  "the survey count started."),
                                       null=True,
                                       blank=True)
     time_stop = models.DateTimeField(help_text=_("Exact date and time that "
@@ -45,7 +45,7 @@ class Survey(models.Model):
                                                   "collected a total of the "
                                                   "people present within the "
                                                   "survey count time or a "
-                                                  "representative sample"),
+                                                  "representative sample."),
                                       blank=True)
     microclimate = models.CharField(max_length=255,
                                     blank=True,
@@ -61,7 +61,7 @@ class Survey(models.Model):
     method = models.CharField(max_length=20,
                               choices=SURVEY_METHOD_CHOICES,
                               help_text=_("Description of the survey count "
-                                          "method"))
+                                          "method."))
 
     @property
     def row(self):
@@ -105,7 +105,7 @@ class SurveyComponent(models.Model):
 
     detail_level = models.CharField(max_length=255,
                                     help_text=_('The level of detail that we '
-                                                'expect in the responses'),
+                                                'expect in the responses.'),
                                     choices=DETAIL_CHOICES,
                                     default='basic')
 
@@ -113,26 +113,26 @@ class SurveyComponent(models.Model):
 
     name = models.CharField(
         max_length=500,
-        help_text=('The unique identifier of this survey question'),
+        help_text=('The unique identifier of this survey question.'),
     )
 
     label = models.CharField(
         max_length=500,
-        help_text=('The text of this survey question'),
+        help_text=('The text of this survey question.'),
     )
 
     type = models.CharField(
         max_length=500,
-        help_text=_('The type of this survey question'),
+        help_text=_('The type of this survey question.'),
     )
 
     position = models.IntegerField(
-        help_text=_('The position of this question in the survey'),
+        help_text=_('The position of this question in the survey.'),
     )
 
     saved_data = models.CharField(
         max_length=500,
-        help_text=_('The submitted answer(s) to this survey question'),
+        help_text=_('The submitted answer(s) to this survey question.'),
         null=True,
         blank=True,
     )

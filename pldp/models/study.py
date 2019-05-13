@@ -62,7 +62,7 @@ class Study(models.Model):
     end_date = models.DateField(null=True,
                                 blank=True,
                                 help_text=_("Date of the last survey "
-                                            "taking place within a study"))
+                                            "taking place within a study."))
     scale = models.CharField(max_length=12,
                              choices=SCALE_CHOICES,
                              blank=True,
@@ -79,11 +79,11 @@ class Study(models.Model):
                                    blank=True)
     manager_name = models.CharField(max_length=1000,
                                     help_text=_("Name of the person in charge "
-                                                "of the study"))
+                                                "of the study."))
     manager_email = models.EmailField(null=True,
                                       blank=True,
                                       help_text=_("Direct email to the person "
-                                                  "in charge of the study"))
+                                                  "in charge of the study."))
     protocol_version = models.CharField(max_length=5,
                                         default='1.0',
                                         help_text=_("Version of the Public "

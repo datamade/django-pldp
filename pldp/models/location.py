@@ -59,7 +59,7 @@ class LocationArea(models.Model):
     total_sqm = models.FloatField(null=True,
                                   blank=True,
                                   help_text=_("Total area of the space "
-                                              "defined by the area geometry"))
+                                              "defined by the area geometry."))
     people_sqm = models.FloatField(null=True,
                                    blank=True,
                                    help_text=_("Area of the space defined by "
@@ -69,7 +69,7 @@ class LocationArea(models.Model):
     typology = models.CharField(max_length=255,
                                 blank=True,
                                 help_text=_("Typology of the space defined "
-                                            "within the area geometry"))
+                                            "within the area geometry."))
 
 
 class Location(models.Model):
@@ -128,13 +128,13 @@ class Location(models.Model):
                              blank=True,
                              on_delete=models.CASCADE,
                              help_text=_("Line that describes the geometry "
-                                         "of the location"))
+                                         "of the location."))
     area = models.ForeignKey(LocationArea,
                              null=True,
                              blank=True,
                              on_delete=models.CASCADE,
                              help_text=_("Polygon that describes the geometry "
-                                         "of the location"))
+                                         "of the location."))
     type = models.CharField(max_length=4,
                             choices=TYPE_CHOICES,
                             blank=True,
