@@ -26,19 +26,18 @@ def agency():
 
 
 @pytest.fixture
-def location_line():
+def location(agency, country):
     linestring = 'LINESTRING(-101.744384 39.32155, -101.552124 39.330048, -101.403808 39.330048, -101.332397 39.364032)'
-    return LocationLine.objects.create(geometry=linestring,
-                                       date_measured='2018-11-11')
-
-
-@pytest.fixture
-def location(agency, country, location_line):
     location = Location.objects.create(agency=agency,
                                        country=country,
-                                       primary_name='Test location',
-                                       line=location_line)
+                                       name_primary='Test location',
+                                       geometry=linestring)
     return location
+
+@pytest.fixture
+def location_line(location):
+    return LocationLine.objects.create(location=location,
+                                       date_measured='2018-11-11')
 
 
 @pytest.fixture
