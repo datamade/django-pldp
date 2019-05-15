@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='location',
             name='geometry',
-            field=django.contrib.gis.db.models.fields.GeometryField(default='POLYGON((-101.744384 39.32155, -101.552124 39.330048, -101.403808 39.330048, -101.332397 39.364032, -101.744384 39.32155))', help_text='Polygon or line that describes the geometry of the location. Polygons are intended for counts of people staying in an area while lines are intended forcounts of people moving across a threshold.', srid=4326),
+            field=django.contrib.gis.db.models.fields.GeometryField(default='POLYGON((-101.744384 39.32155, -101.552124 39.330048, -101.403808 39.330048, -101.332397 39.364032, -101.744384 39.32155))', help_text='Polygon or line that describes the geometry of the location. Polygons are intended for counts of people staying in an area while lines are intended for counts of people moving across a threshold.', srid=4326),
             preserve_default=False,
         ),
         migrations.AddField(
