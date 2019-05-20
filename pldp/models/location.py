@@ -86,16 +86,20 @@ class Location(models.Model):
                                                 "of the location. Polygons "
                                                 "are intended for counts of "
                                                 "people staying in an area "
-                                                "while lines are intended for"
+                                                "while lines are intended for "
                                                 "counts of people moving "
                                                 "across a threshold."))
     geometry_type = models.CharField(max_length=4,
-                            choices=TYPE_CHOICES,
-                            help_text=_("Indication of whether the location "
-                                        "is intended for counts of people "
-                                        "moving (across a line), or whether "
-                                        "it is intended for counts of people "
-                                        "staying (within an area)."))
+                                     choices=TYPE_CHOICES,
+                                     blank=True,
+                                     help_text=_("Indication of whether the "
+                                                 "location is intended for "
+                                                 "counts of people "
+                                                 "moving (across a line), "
+                                                 "or whether "
+                                                 "it is intended for counts "
+                                                 "of people "
+                                                 "staying (within an area)."))
 
     def __str__(self):
         return self.name_primary
