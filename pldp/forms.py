@@ -157,6 +157,18 @@ MODE_DETAILED_CHOICES = [
     ('vehicle_public', _('Moving by public vehicle (e.g. by bus or train)')),
 ]
 
+# Choices for groups_observational question
+GROUPS_TYPE_CHOICES = [
+    ('basic', _('Basic choices')),
+]
+
+GROUPS_BASIC_CHOICES = [
+    ('1', _('Single (1)')),
+    ('2', _('Pair (2)')),
+    ('3-7', _('Smaller group (3-7)')),
+    ('8+', _('Crowd (8+)')),
+]
+
 # Choices for posture_observational question
 POSTURE_TYPE_CHOICES = [
     ('basic', _('Basic choices')),
