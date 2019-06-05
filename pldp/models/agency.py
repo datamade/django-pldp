@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _
 
 from languages_plus.models import Language
 
-# Agency model
+
 class Agency(models.Model):
     TYPE_CHOICES = [
         ('governmental agency', _('governmental agency')),
@@ -49,6 +49,8 @@ class Agency(models.Model):
                             blank=True,
                             help_text=_("Character of the type of agency that "
                                         "is conducting/posting the study."))
+
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

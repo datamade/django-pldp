@@ -95,5 +95,7 @@ class Study(models.Model):
                              help_text=_("Notes that regard the entirety of "
                                          "the study."))
 
+    is_active = models.BooleanField(default=True)
+
     def __str__(self):
         return '{} - {}'.format(self.agency.name, self.title)
