@@ -19,7 +19,7 @@ setup(
     author='DataMade, LLC',
     author_email='info@datamade.us',
     install_requires=[
-        'Django<2.2',
+        'Django<2.3',
         'django-languages-plus==1.0.0',
     ],
     classifiers=[
